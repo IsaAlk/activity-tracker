@@ -1,4 +1,4 @@
-import 'package:activity_tracker/sensors_view.dart';
+import 'package:activity_tracker/homepage_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: DummyPage(),
+      home: HomePage(),
     );
   }
 }
