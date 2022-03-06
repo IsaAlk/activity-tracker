@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'http/http_service.dart';
 
-class AccelerometerDataPage extends StatelessWidget {
+class GyroscopePage extends StatelessWidget {
   final HttpService httpService = HttpService();
 
-  AccelerometerDataPage({Key? key}) : super(key: key);
+  GyroscopePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +22,18 @@ class AccelerometerDataPage extends StatelessWidget {
             AsyncSnapshot<List<SensorDataResponse>> snapshot) {
           if (snapshot != null && snapshot.hasData) {
             List<SensorDataResponse>? sensorsData = snapshot.data;
-            List<FlSpot>? acceleroPlotX = [];
-            List<FlSpot>? acceleroPlotY = [];
-            List<FlSpot>? acceleroPlotZ = [];
+            List<FlSpot>? gyroPlotX = [];
+            List<FlSpot>? gyroPlotY = [];
+            List<FlSpot>? gyroPlotZ = [];
 
             if (sensorsData != null) {
               sensorsData.asMap().forEach((index, value) => {
-                    acceleroPlotX.add(FlSpot(index.toDouble(),
-                        double.parse(value.data.acceleroData.x))),
-                    acceleroPlotY.add(FlSpot(index.toDouble(),
-                        double.parse(value.data.acceleroData.y))),
-                    acceleroPlotZ.add(FlSpot(index.toDouble(),
-                        double.parse(value.data.acceleroData.z)))
+                    gyroPlotX.add(FlSpot(
+                        index.toDouble(), double.parse(value.data.gyroData.x))),
+                    gyroPlotY.add(FlSpot(
+                        index.toDouble(), double.parse(value.data.gyroData.y))),
+                    gyroPlotZ.add(FlSpot(
+                        index.toDouble(), double.parse(value.data.gyroData.z)))
                   });
               return Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -41,7 +41,7 @@ class AccelerometerDataPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
-                      Text("Accelerometer Data",
+                      Text("Gyroscope Data",
                           style: TextStyle(color: Colors.black, fontSize: 25)),
                       SizedBox(
                         width: 15,
@@ -78,21 +78,21 @@ class AccelerometerDataPage extends StatelessWidget {
                               borderData: FlBorderData(show: false),
                               lineBarsData: [
                                 LineChartBarData(
-                                  spots: acceleroPlotX,
+                                  spots: gyroPlotX,
                                   barWidth: 3,
                                   colors: [
                                     Colors.red,
                                   ],
                                 ),
                                 LineChartBarData(
-                                  spots: acceleroPlotY,
+                                  spots: gyroPlotY,
                                   barWidth: 3,
                                   colors: [
                                     Colors.green,
                                   ],
                                 ),
                                 LineChartBarData(
-                                  spots: acceleroPlotZ,
+                                  spots: gyroPlotZ,
                                   barWidth: 3,
                                   colors: [
                                     Colors.blue,
