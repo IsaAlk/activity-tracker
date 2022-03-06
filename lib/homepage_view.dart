@@ -2,8 +2,8 @@ import 'package:activity_tracker/AccelerometerDataPage.dart';
 import 'package:activity_tracker/StepsPage.dart';
 import 'package:flutter/material.dart';
 
-import 'DistancePage.dart';
 import 'GyroscopeDataPage.dart';
+import 'ble/bluetooth_manager.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
             Align(
                 alignment: Alignment.center,
                 child: ElevatedButton(
-                  child: Text("Distance"),
+                  child: Text("Bluetooth Manager"),
                   style: ElevatedButton.styleFrom(
                     onPrimary: Colors.white,
                     primary: Colors.amber,
@@ -102,7 +102,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DistancePage()),
+                      MaterialPageRoute(
+                          builder: (context) => BluetoothManager()),
                     );
                   },
                 ))
